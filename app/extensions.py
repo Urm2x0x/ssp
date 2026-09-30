@@ -6,6 +6,7 @@ import sqlalchemy as sa
 
 #Documentation - for the above functions
 
+#what does this file does is it stores variables used by our models. also for creating session.
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__)) #__file__ python variable which fills automically, for where the current file is being run
 # abs path converts .../app/ (stripped off the actual name)
@@ -32,10 +33,10 @@ Base.query = _ScopedSession.query_property() #query attribute for each table in 
 #just creating a Class, this class gathers all function we would be needing for /app/models, so it just really a function used created for summing up of all the parts, needed by sql alqhemy in one place
 class _DB:
 
-    Model = Base
-    session = _ScopedSession
+    Model = Base #db.base just another name for table
+    session = _ScopedSession #creates session/thread
 
-    Column = sa.Column
+    Column = sa.Column #the base gonna have these attributes
     Integer = sa.Integer
     String = sa.String
     Float = sa.Float
