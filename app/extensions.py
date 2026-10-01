@@ -60,5 +60,3 @@ class _DB:
 
 
 db = _DB()
-
-#Thank you for looking at this pile of code, nobody was gonna look at it, but u did, thanks again bud.
