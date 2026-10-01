@@ -23,12 +23,15 @@ class DailyAvailability:
 
 def build_availability_window(
     start: date, num_days: int, weekday_hours: float, weekend_hours: float
-) -> list[DailyAvailability]:
+) -> list[DailyAvailability]: #used as hint for programmers/code reviewers to tell, what is this function's gonna return, it will return a list , with daily availabbility object
     window = []
     for i in range(num_days):
-        day = start + timedelta(days=i)
+        day = start + timedelta(days=i) #to add the days in the loop, we use timedelta function, which is just used to add the dates with number of days
 
-
-        hours = weekend_hours if day.weekday() >= 5 else weekday_hours
-        window.append(DailyAvailability(day=day, available_hours=hours))
+        #weekday function represents 0 - monday, 1 - tuesday, ....and so on..., 5 - saturday, 6 - sunday
+        if day.weekday() >= 5:
+            hours = weekend_hours 
+        else:
+            hours = weekday_hours
+        window.append(DailyAvailability(day=day, available_hours=hours)) #this appends the object at the end of the window list, the class we created above, daily available, creating its one instance which takes date of the day, and allocates hours for that day
     return window
